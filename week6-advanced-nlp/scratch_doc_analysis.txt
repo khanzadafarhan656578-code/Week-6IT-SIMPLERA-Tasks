@@ -1,0 +1,154 @@
+Total Paragraphs: 108
+Total Tables: 17
+
+--- PARAGRAPHS ---
+P3 [Heading 1]: CONTENTS
+P5 [NoStyle]: 01   Executive Impact Summary	3
+P6 [NoStyle]: 02   Problem Statement & Objectives	3
+P7 [NoStyle]: 03   Dataset Architecture & Exploratory Analysis	4
+P8 [NoStyle]: 04   Text Preprocessing & Feature Engineering	5
+P9 [NoStyle]: 05   Model Training — Stratified CV & GridSearchCV	6
+P10 [NoStyle]: 06   Model Evaluation & Diagnostics	7
+P11 [NoStyle]: 07   N-Gram & Lexical Pattern Analysis	9
+P12 [NoStyle]: 08   Model Interpretability	12
+P13 [NoStyle]: 09   Production Engineering Architecture (Step 17)	13
+P14 [NoStyle]: 10   Business Impact & Use Cases	14
+P15 [NoStyle]: 11   Viva Voce & Technical Defense Preparation	15
+P16 [NoStyle]: 12   Conclusion & Engineering Roadmap	16
+P18 [NoStyle]: This project delivers a production-grade Natural Language Processing pipeline that classifies Amazon Echo customer reviews as Positive or Negative sentiment, wrapped in an enterprise engineering layer meeting Step 17 production standards. Across 3,062 cleaned customer reviews (87.7% Positive, 12.3% Negative), a Stratified 5-Fold Cross-Validated, GridSearch-tuned Logistic Regression classifier (C = 10.0, solver = liblinear) was selected as the production model, achieving 92.99% test accuracy and a 96.12% F1-Score on the positive class, validated by a 92.16% mean cross-validation accuracy.
+P19 [NoStyle]: Beyond the modelling task, the system was re-engineered with centralized configuration management, structured logging, automated result export, model versioning, a CLI batch-prediction tool, a full unit test suite (10/10 passing), and an optimized multi-page Streamlit dashboard — transforming a coursework notebook into a deployable analytics service.
+P20 [NoStyle]: E-commerce platforms accumulate thousands of unstructured customer reviews daily. Manually triaging this volume to identify dissatisfied customers, emerging product defects, or marketing-worthy praise does not scale. This project builds an automated, reproducible sentiment classification pipeline that ingests raw review text, cleans and vectorizes it, benchmarks multiple classifiers under rigorous cross-validation, and serves predictions through both a CLI tool and an interactive web dashboard.
+P21 [List Paragraph]: Dataset Auto-Detector & QA Auditor: Automated dataset auto-detection and data-quality auditing (missing values, duplicates, class-imbalance ratio).
+P22 [List Paragraph]: Preprocessing: Robust NLP preprocessing pipeline including negation-aware stopword filtering and lemmatization.
+P23 [List Paragraph]: Modelling: TF-IDF vectorization benchmarked against three classical classifiers under 5-Fold Stratified Cross-Validation and GridSearchCV hyperparameter tuning.
+P24 [List Paragraph]: Evaluation: Confusion matrices, classification reports, and n-gram lexical analysis to diagnose model behaviour class-by-class.
+P25 [List Paragraph]: Deployment: A centrally configured, logged, versioned, and unit-tested codebase exposed via a CLI and a production-styled Streamlit dashboard.
+P27 [NoStyle]: The working dataset comprises 3,062 labelled Amazon Echo / Alexa device reviews following data-quality auditing (1 missing review text record handled, duplicates screened without leakage into the train/test split). The class distribution is heavily imbalanced at approximately 7.1 : 1 — 2,685 Positive reviews (87.7%) versus 377 Negative reviews (12.3%) — a characteristic of real-world customer feedback that materially shapes model behaviour and is addressed explicitly in the Model Evaluation and Roadmap sections.
+P29 [NoStyle]: FIG 1  |  Dataset Sentiment Class Distribution
+P30 [Heading 2]: 3.1 Review Length Characteristics
+P31 [NoStyle]: Review length (word count) is strongly right-skewed for both classes: the majority of reviews — positive and negative alike — fall under 20 words, with a long tail of more detailed reviews extending past 100 words. This informed the choice of a bag-of-words-style TF-IDF representation over sequence-sensitive embeddings, since most signal is carried by short, high-frequency phrases rather than long-range context.
+P33 [NoStyle]: FIG 2  |  Review Length Distribution by Sentiment (Word Count)
+P35 [NoStyle]: Raw review text is passed through a modular cleaning pipeline (utils/preprocess.py) prior to vectorization:
+P36 [List Paragraph]: 1. Noise Removal: Lowercasing, HTML tag stripping, URL removal, and regex-based punctuation/number removal.
+P37 [List Paragraph]: 2. Negation-Preserving Stopword Filtering: Common stopwords are removed using NLTK's stopword corpus, with an explicit exception list that preserves negation particles and fuses them with the following token (e.g. “not_good”, “never_failed”) so that negated sentiment is not collapsed into its unnegated root word.
+P38 [List Paragraph]: 3. Lemmatization: Cleaned tokens are reduced to their dictionary root form using NLTK's WordNet lemmatizer, which was preferred over stemming to avoid producing non-words that hurt interpretability of downstream coefficients.
+P39 [Heading 2]: 4.1 Vectorization Choice — TF-IDF
+P40 [NoStyle]: Cleaned text is converted into numerical features using Term Frequency–Inverse Document Frequency (TF-IDF) vectorization with max_features capped at 5,000. TF-IDF was selected over a raw Bag-of-Words representation because it down-weights ubiquitous but low-information terms (e.g. “echo”, “device”, which dominate the corpus regardless of sentiment) while up-weighting terms that are more discriminative of a specific review's content. It was preferred over dense embeddings such as Word2Vec for this task because the dataset is short-text and moderate in size, where sparse linear models trained on TF-IDF features are both faster to train and more directly interpretable via coefficient inspection — a requirement of the Model Interpretability section below.
+P42 [NoStyle]: Three classical text-classification models were benchmarked, each tuned independently via GridSearchCV over a stratified 5-fold cross-validation split, ensuring the class ratio is preserved across every fold despite the dataset's imbalance:
+P43 [List Paragraph]: Logistic Regression: Hyperparameter grid over C (inverse regularization strength), solver, and penalty.
+P44 [List Paragraph]: Multinomial Naive Bayes: Hyperparameter grid over alpha (Laplace smoothing).
+P45 [List Paragraph]: Linear SVM (Calibrated): Hyperparameter grid over C and loss function, with probability calibration applied for confidence scoring.
+P47 [NoStyle]: Logistic Regression was selected as the production model on the strength of its F1-Score and near-perfect positive-class recall, combined with fast training (~7.08s) and directly interpretable coefficients.
+P49 [NoStyle]: FIG 3  |  Model Benchmarking Comparison Across Accuracy, Precision, Recall & F1-Score
+P51 [NoStyle]: The production model (Logistic Regression) was evaluated independently via evaluate.py on a held-out test set of 613 reviews. The full classification report below reveals a pattern typical of severely imbalanced binary classification:
+P52 [NoStyle]: The headline 96.12% F1-Score is the Positive-class figure and reflects the model's strong performance on the majority class. The Macro-averaged F1 of 0.80 gives a more balanced picture: Negative-class recall sits at only 49%, meaning roughly half of genuinely negative reviews are still misclassified as positive under the current decision threshold — a direct consequence of the 7.1:1 class imbalance rather than a flaw in the modelling approach. This trade-off, and how to address it, is discussed explicitly in the Viva Voce and Roadmap sections.
+P54 [NoStyle]: FIG 4  |  Confusion Matrix — Logistic Regression (Production Model)
+P55 [Heading 2]: 6.1 Cross-Model Confusion Matrix Comparison
+P56 [NoStyle]: For completeness, the confusion matrices of the two runner-up models are included below. Linear SVM shows the strongest negative-class detection (44 true negatives) at a small cost to positive-class recall, while Naive Bayes sits between the two — a useful reference set for any future ensembling or thresholding decision.
+P58 [NoStyle]: FIG 5  |  Confusion Matrix — Linear SVM (Calibrated)
+P60 [NoStyle]: FIG 6  |  Confusion Matrix — Multinomial Naive Bayes
+P62 [NoStyle]: Frequency analysis of unigrams, bigrams, and trigrams across the cleaned corpus confirms the dataset centres on Amazon Echo / Alexa smart-speaker reviews, and surfaces the vocabulary that most strongly separates the two sentiment classes.
+P64 [NoStyle]: FIG 7  |  Top Unigrams by Frequency
+P66 [NoStyle]: FIG 8  |  Top Bigrams by Frequency
+P68 [NoStyle]: FIG 9  |  Top Trigrams by Frequency
+P69 [NoStyle]: Bigrams such as “work great,” “love echo,” and “easy set” dominate the positive vocabulary, while the negative word cloud is characterised by device-friction terms such as “connect,” “respond,” “disappoint,” and repeated references to “sound quality” in a complaint context. This distinction between the same phrase appearing in both praise and complaint contexts (e.g. “sound quality”) is precisely what the TF-IDF + Logistic Regression pipeline must learn to disambiguate using surrounding tokens, and is explored further in the interpretability section below.
+P71 [NoStyle]: FIG 10  |  Positive Sentiment Word Cloud
+P73 [NoStyle]: FIG 11  |  Negative Sentiment Word Cloud
+P75 [NoStyle]: Because Logistic Regression is a linear model over TF-IDF features, each feature's coefficient is directly interpretable as its contribution toward a Positive (positive coefficient) or Negative (negative coefficient) prediction. Running predict.py --text on a sample review returned the following diagnostic output:
+P76 [NoStyle]: Input: “This product is absolutely amazing! Outstanding quality and super fast shipping.”
+  Sentiment: Positive   Confidence: 97.59%
+Top Influential Words → amaze (+3.05), absolutely (+1.11), fast (+1.11), outstanding (+0.95), product (−1.17), quality (−1.92)
+P77 [NoStyle]: The dominant positive driver, “amaze” (+3.05), aligns intuitively with strong praise. Notably, “quality” (−1.92) and “product” (−1.17) carry negative coefficients despite appearing in this positive review — because both terms occur across the corpus in complaint contexts (“sound quality,” “product issue”) far more often than in praise, the model has learned a net-negative association for the bare token. This is an expected behaviour of a bag-of-words linear model and is a useful viva talking point: it demonstrates the model captures corpus-level word associations rather than true compositional meaning, and would be a natural motivation for a future n-gram-aware or transformer-based upgrade.
+P79 [NoStyle]: The codebase was re-architected to meet Step 17 production-engineering standards, moving well beyond a single analysis notebook:
+P80 [List Paragraph]: Centralized Configuration: config.py centralizes every dataset path, model path, vectorizer parameter, GridSearch space, and UI setting — eliminating hardcoded magic constants across the codebase.
+P81 [List Paragraph]: Structured Logging: utils/logger.py configures dedicated file appenders for logs/training.log, logs/prediction.log, and logs/application.log.
+P82 [List Paragraph]: Model Versioning: models/model_info.json automatically records training timestamps, dataset size, train/test metrics, F1-Score, CV mean and standard deviation, tuned hyperparameters, and inference latency for every training run.
+P83 [List Paragraph]: Automated Results Export: evaluate.py exports results/metrics.csv, classification_report.txt, benchmark_table.csv, prediction_examples.csv, and evaluation_report.md on every evaluation run.
+P84 [List Paragraph]: CLI & Batch Prediction: predict.py provides both single-string (--text) and batch CSV (--file) inference from the command line, independent of the web dashboard.
+P85 [List Paragraph]: Automated Testing: A full suite under tests/ covering preprocessing, prediction, and training was executed via python -m unittest discover tests, with 10 of 10 tests passing.
+P86 [List Paragraph]: Optimized Streamlit Dashboard: app.py uses @st.cache_resource and @st.cache_data for model/data caching, and supports batch CSV upload with downloadable prediction results.
+P88 [Heading 2]: 10.1 Real-Time Customer Experience Monitoring
+P89 [NoStyle]: Deployed against a live review feed, the model flags negative sentiment as it arrives, allowing support and product teams to triage dissatisfied customers within hours rather than discovering issues in periodic manual review sweeps.
+P90 [Heading 2]: 10.2 Product Defect & Feature Signal Extraction
+P91 [NoStyle]: The n-gram and word-cloud analysis pipeline can be re-run on any negative-flagged subset to surface recurring complaint themes (e.g. connectivity, sound quality) directly from customer language, feeding a data-driven product roadmap.
+P92 [Heading 2]: 10.3 Marketing & Testimonial Mining
+P93 [NoStyle]: High-confidence positive predictions with strong influential-word signals (e.g. “amaze,” “outstanding”) can be automatically surfaced as candidate testimonials for marketing use, reducing manual review time.
+P94 [Heading 2]: 10.4 Known Limitation & Mitigation Path
+P95 [NoStyle]: Given the 7.1:1 class imbalance, the current model under-detects negative sentiment (49% recall on the minority class). For a production deployment prioritising complaint detection, the recommended next iteration would apply class_weight='balanced' or SMOTE-based oversampling and re-tune the decision threshold to favour negative-class recall, accepting a modest reduction in positive-class precision in exchange for catching more dissatisfied customers.
+P97 [Heading 2]: Q1 — Why TF-IDF Over Bag-of-Words or Word2Vec?
+P98 [NoStyle]: TF-IDF retains the speed and interpretability of a sparse bag-of-words representation while correcting its main weakness: it down-weights terms that appear in almost every document (like “echo” in this corpus) and up-weights terms that are more discriminative of an individual review. Dense embeddings like Word2Vec were not necessary here because the dataset is short-text and moderate in size, where a linear model over sparse TF-IDF features trains faster and produces directly inspectable coefficients.
+P99 [Heading 2]: Q2 — Why Does F1-Score (96.12%) Exceed Accuracy (92.99%)?
+P100 [NoStyle]: The reported F1-Score is the Positive-class F1, computed from Positive-class precision (0.93) and recall (0.99). Because Positive reviews make up 87.7% of the data, a metric computed on that single dominant class will naturally sit close to — and can exceed — overall accuracy. The Macro-averaged F1 of 0.80, which weights both classes equally, is the more honest single-number summary of balanced performance.
+P101 [Heading 2]: Q3 — Why Is Negative-Class Recall Only 49%?
+P102 [NoStyle]: With only 377 negative examples against 2,685 positive ones, the model sees far fewer negative training signals and — combined with the default 0.5 decision threshold — is biased toward predicting the majority class. This is a textbook consequence of class imbalance rather than a modelling error, and is the primary limitation flagged in the roadmap.
+P103 [Heading 2]: Q4 — Why Was Logistic Regression Chosen Over SVM or Naive Bayes?
+P104 [NoStyle]: All three tuned models scored within roughly 0.3 percentage points of each other on accuracy. Logistic Regression was selected because it achieved the highest F1-Score and near-perfect positive recall, trains in a comparable timeframe, and — critically for this report's interpretability requirement — exposes directly interpretable per-word coefficients without requiring the additional probability-calibration step that Linear SVM needed.
+P106 [NoStyle]: This project delivers a fully benchmarked, production-engineered sentiment analysis system: a Logistic Regression classifier tuned via Stratified 5-Fold Cross-Validation and GridSearchCV, evaluated with full diagnostic transparency including confusion matrices and interpretable coefficients, and wrapped in a Step 17-compliant engineering layer of configuration management, logging, versioning, automated testing, CLI tooling, and a cached, batch-capable Streamlit dashboard.
+P107 [NoStyle]: BOTTOM LINE   A 92.99% accurate, 96.12% F1 production sentiment engine is ready for deployment, with the clearest next engineering step being class-imbalance correction to lift negative-review detection beyond its current 49% recall — directly increasing the system's value as an early-warning tool for customer dissatisfaction.
+
+--- TABLES ---
+
+Table 1 (2 rows x 1 cols):
+SENIOR MACHINE LEARNING & NLP ENGINEERING TEAM SENTIFY: PRODUCTION NLP SENTIMENT ANALYSIS ENGINE An Enterprise-Grade Natural Language Processing System for Amazon Echo Customer Review Classification
+E-COMMERCE VOICE ASSISTANT PRODUCT REVIEW PORTFOLIO
+
+Table 2 (6 rows x 2 cols):
+PREPARED BY | Muhammad Bilal Khan
+REGISTRATION NO | ALMLB01-4883
+INTERNSHIP | AI & ML Internship, ITSimplera Institute (June – August 2026)
+SUPERVISOR | Talal Rehan
+INSTRUCTOR | Sir Rayyan Khan
+SUBMISSION DEADLINE | Friday, 31 July 2026
+
+Table 3 (1 rows x 1 cols):
+PRODUCTION BUILD v1.0.0  •  STEP 17 ENGINEERING STANDARDS  •  JULY 2026
+
+Table 4 (1 rows x 2 cols):
+01 | Executive Impact Summary
+
+Table 5 (1 rows x 2 cols):
+02 | Problem Statement & Objectives
+
+Table 6 (1 rows x 2 cols):
+03 | Dataset Architecture & Exploratory Analysis
+
+Table 7 (1 rows x 2 cols):
+04 | Text Preprocessing & Feature Engineering
+
+Table 8 (1 rows x 2 cols):
+05 | Model Training — Stratified CV & GridSearchCV
+
+Table 9 (4 rows x 7 cols):
+Classifier | Tuned Parameters | Accuracy | Precision | Recall | F1-Score | 5-Fold CV Mean
+Logistic Regression ★ | C=10.0, solver=liblinear | 92.99% | 93.35% | 99.07% | 96.12% | 92.16% (±0.16%)
+Linear SVM (Calibrated) | C=5.0, loss=squared_hinge | 92.82% | 94.42% | 97.58% | 95.98% | 92.57% (±0.49%)
+Multinomial Naive Bayes | alpha=0.01 | 92.66% | 94.10% | 97.77% | 95.90% | 92.90% (±0.67%)
+
+Table 10 (1 rows x 2 cols):
+06 | Model Evaluation & Diagnostics
+
+Table 11 (6 rows x 5 cols):
+Class | Precision | Recall | F1-Score | Support
+Negative (0) | 0.88 | 0.49 | 0.63 | 75
+Positive (1) | 0.93 | 0.99 | 0.96 | 538
+Accuracy |  |  | 0.93 | 613
+Macro Avg | 0.91 | 0.74 | 0.80 | 613
+Weighted Avg | 0.93 | 0.93 | 0.92 | 613
+
+Table 12 (1 rows x 2 cols):
+07 | N-Gram & Lexical Pattern Analysis
+
+Table 13 (1 rows x 2 cols):
+08 | Model Interpretability
+
+Table 14 (1 rows x 2 cols):
+09 | Production Engineering Architecture (Step 17)
+
+Table 15 (1 rows x 2 cols):
+10 | Business Impact & Use Cases
+
+Table 16 (1 rows x 2 cols):
+11 | Viva Voce & Technical Defense Preparation
+
+Table 17 (1 rows x 2 cols):
+12 | Conclusion & Engineering Roadmap

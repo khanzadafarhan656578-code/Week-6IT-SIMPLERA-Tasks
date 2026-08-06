@@ -1,0 +1,4 @@
+Model,Best_Params,Accuracy,Precision,Recall,F1_Score,Train_Time_s,Inference_Time_ms
+Logistic Regression (TF-IDF),{'C': 10.0},0.9906,0.9907,0.9906,0.9906,51.38,0.02
+Linear SVM (TF-IDF),{'C': 10.0},0.9859,0.9862,0.9859,0.986,5.62,0.01
+Multinomial Naive Bayes (TF-IDF),{'alpha': 0.1},0.9765,0.9775,0.9765,0.9766,0.56,0.03

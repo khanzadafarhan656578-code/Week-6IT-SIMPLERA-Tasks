@@ -1,0 +1,151 @@
+=== PARAGRAPH RUN DETAILS ===
+P3 [Heading 1]: Run('CONTENTS...', font=Georgia, size=15.0, bold=True, color=14293D)
+P5 [NoStyle]: Run('01   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Executive Impact Summary...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	3...', font=Calibri, size=11.0, bold=True, color=14293D)
+P6 [NoStyle]: Run('02   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Problem Statement & Objec...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	3...', font=Calibri, size=11.0, bold=True, color=14293D)
+P7 [NoStyle]: Run('03   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Dataset Architecture & Ex...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	4...', font=Calibri, size=11.0, bold=True, color=14293D)
+P8 [NoStyle]: Run('04   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Text Preprocessing & Feat...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	5...', font=Calibri, size=11.0, bold=True, color=14293D)
+P9 [NoStyle]: Run('05   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Model Training — Stratifi...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	6...', font=Calibri, size=11.0, bold=True, color=14293D)
+P10 [NoStyle]: Run('06   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Model Evaluation & Diagno...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	7...', font=Calibri, size=11.0, bold=True, color=14293D)
+P11 [NoStyle]: Run('07   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('N-Gram & Lexical Pattern ...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	9...', font=Calibri, size=11.0, bold=True, color=14293D)
+P12 [NoStyle]: Run('08   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Model Interpretability...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	12...', font=Calibri, size=11.0, bold=True, color=14293D)
+P13 [NoStyle]: Run('09   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Production Engineering Ar...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	13...', font=Calibri, size=11.0, bold=True, color=14293D)
+P14 [NoStyle]: Run('10   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Business Impact & Use Cas...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	14...', font=Calibri, size=11.0, bold=True, color=14293D)
+P15 [NoStyle]: Run('11   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Viva Voce & Technical Def...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	15...', font=Calibri, size=11.0, bold=True, color=14293D)
+P16 [NoStyle]: Run('12   ...', font=Calibri, size=11.0, bold=True, color=C9A227) | Run('Conclusion & Engineering ...', font=Calibri, size=11.0, bold=None, color=14293D) | Run('	16...', font=Calibri, size=11.0, bold=True, color=14293D)
+P18 [NoStyle]: Run('This project delivers a p...', font=Calibri, size=11.0, bold=None, color=24303D)
+P19 [NoStyle]: Run('Beyond the modelling task...', font=Calibri, size=11.0, bold=None, color=24303D)
+P20 [NoStyle]: Run('E-commerce platforms accu...', font=Calibri, size=11.0, bold=None, color=24303D)
+P21 [List Paragraph]: Run('Dataset Auto-Detector & Q...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Automated dataset auto-de...', font=Calibri, size=10.5, bold=None, color=24303D)
+P22 [List Paragraph]: Run('Preprocessing: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Robust NLP preprocessing ...', font=Calibri, size=10.5, bold=None, color=24303D)
+P23 [List Paragraph]: Run('Modelling: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('TF-IDF vectorization benc...', font=Calibri, size=10.5, bold=None, color=24303D)
+P24 [List Paragraph]: Run('Evaluation: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Confusion matrices, class...', font=Calibri, size=10.5, bold=None, color=24303D)
+P25 [List Paragraph]: Run('Deployment: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('A centrally configured, l...', font=Calibri, size=10.5, bold=None, color=24303D)
+P27 [NoStyle]: Run('The working dataset compr...', font=Calibri, size=11.0, bold=None, color=24303D)
+P29 [NoStyle]: Run('FIG 1  |  Dataset Sentime...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P30 [Heading 2]: Run('3.1 Review Length Charact...', font=Calibri, size=11.5, bold=True, color=14293D)
+P31 [NoStyle]: Run('Review length (word count...', font=Calibri, size=11.0, bold=None, color=24303D)
+P33 [NoStyle]: Run('FIG 2  |  Review Length D...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P35 [NoStyle]: Run('Raw review text is passed...', font=Calibri, size=11.0, bold=None, color=24303D)
+P36 [List Paragraph]: Run('1. Noise Removal: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Lowercasing, HTML tag str...', font=Calibri, size=10.5, bold=None, color=24303D)
+P37 [List Paragraph]: Run('2. Negation-Preserving St...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Common stopwords are remo...', font=Calibri, size=10.5, bold=None, color=24303D)
+P38 [List Paragraph]: Run('3. Lemmatization: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Cleaned tokens are reduce...', font=Calibri, size=10.5, bold=None, color=24303D)
+P39 [Heading 2]: Run('4.1 Vectorization Choice ...', font=Calibri, size=11.5, bold=True, color=14293D)
+P40 [NoStyle]: Run('Cleaned text is converted...', font=Calibri, size=11.0, bold=None, color=24303D)
+P42 [NoStyle]: Run('Three classical text-clas...', font=Calibri, size=11.0, bold=None, color=24303D)
+P43 [List Paragraph]: Run('Logistic Regression: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Hyperparameter grid over ...', font=Calibri, size=10.5, bold=None, color=24303D)
+P44 [List Paragraph]: Run('Multinomial Naive Bayes: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Hyperparameter grid over ...', font=Calibri, size=10.5, bold=None, color=24303D)
+P45 [List Paragraph]: Run('Linear SVM (Calibrated): ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('Hyperparameter grid over ...', font=Calibri, size=10.5, bold=None, color=24303D)
+P47 [NoStyle]: Run('Logistic Regression was s...', font=None, size=9.5, bold=None, color=44546A)
+P49 [NoStyle]: Run('FIG 3  |  Model Benchmark...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P51 [NoStyle]: Run('The production model (Log...', font=Calibri, size=11.0, bold=None, color=24303D)
+P52 [NoStyle]: Run('The headline 96.12% F1-Sc...', font=Calibri, size=11.0, bold=None, color=24303D)
+P54 [NoStyle]: Run('FIG 4  |  Confusion Matri...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P55 [Heading 2]: Run('6.1 Cross-Model Confusion...', font=Calibri, size=11.5, bold=True, color=14293D)
+P56 [NoStyle]: Run('For completeness, the con...', font=Calibri, size=11.0, bold=None, color=24303D)
+P58 [NoStyle]: Run('FIG 5  |  Confusion Matri...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P60 [NoStyle]: Run('FIG 6  |  Confusion Matri...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P62 [NoStyle]: Run('Frequency analysis of uni...', font=Calibri, size=11.0, bold=None, color=24303D)
+P64 [NoStyle]: Run('FIG 7  |  Top Unigrams by...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P66 [NoStyle]: Run('FIG 8  |  Top Bigrams by ...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P68 [NoStyle]: Run('FIG 9  |  Top Trigrams by...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P69 [NoStyle]: Run('Bigrams such as “work gre...', font=Calibri, size=11.0, bold=None, color=24303D)
+P71 [NoStyle]: Run('FIG 10  |  Positive Senti...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P73 [NoStyle]: Run('FIG 11  |  Negative Senti...', font=Calibri, size=9.0, bold=None, color=2E8B87)
+P75 [NoStyle]: Run('Because Logistic Regressi...', font=Calibri, size=11.0, bold=None, color=24303D)
+P76 [NoStyle]: Run('Input: “This product is a...', font=Consolas, size=9.5, bold=None, color=9FE6C6) | Run('
+  Sentiment: Positive   ...', font=Consolas, size=9.5, bold=None, color=9FE6C6) | Run('
+Top Influential Words → ...', font=Consolas, size=9.5, bold=None, color=E8C97A)
+P77 [NoStyle]: Run('The dominant positive dri...', font=Calibri, size=11.0, bold=None, color=24303D)
+P79 [NoStyle]: Run('The codebase was re-archi...', font=Calibri, size=11.0, bold=None, color=24303D)
+P80 [List Paragraph]: Run('Centralized Configuration...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('config.py centralizes eve...', font=Calibri, size=10.5, bold=None, color=24303D)
+P81 [List Paragraph]: Run('Structured Logging: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('utils/logger.py configure...', font=Calibri, size=10.5, bold=None, color=24303D)
+P82 [List Paragraph]: Run('Model Versioning: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('models/model_info.json au...', font=Calibri, size=10.5, bold=None, color=24303D)
+P83 [List Paragraph]: Run('Automated Results Export:...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('evaluate.py exports resul...', font=Calibri, size=10.5, bold=None, color=24303D)
+P84 [List Paragraph]: Run('CLI & Batch Prediction: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('predict.py provides both ...', font=Calibri, size=10.5, bold=None, color=24303D)
+P85 [List Paragraph]: Run('Automated Testing: ...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('A full suite under tests/...', font=Calibri, size=10.5, bold=None, color=24303D)
+P86 [List Paragraph]: Run('Optimized Streamlit Dashb...', font=Calibri, size=10.5, bold=True, color=14293D) | Run('app.py uses @st.cache_res...', font=Calibri, size=10.5, bold=None, color=24303D)
+P88 [Heading 2]: Run('10.1 Real-Time Customer E...', font=Calibri, size=11.5, bold=True, color=14293D)
+P89 [NoStyle]: Run('Deployed against a live r...', font=Calibri, size=11.0, bold=None, color=24303D)
+P90 [Heading 2]: Run('10.2 Product Defect & Fea...', font=Calibri, size=11.5, bold=True, color=14293D)
+P91 [NoStyle]: Run('The n-gram and word-cloud...', font=Calibri, size=11.0, bold=None, color=24303D)
+P92 [Heading 2]: Run('10.3 Marketing & Testimon...', font=Calibri, size=11.5, bold=True, color=14293D)
+P93 [NoStyle]: Run('High-confidence positive ...', font=Calibri, size=11.0, bold=None, color=24303D)
+P94 [Heading 2]: Run('10.4 Known Limitation & M...', font=Calibri, size=11.5, bold=True, color=14293D)
+P95 [NoStyle]: Run('Given the 7.1:1 class imb...', font=Calibri, size=11.0, bold=None, color=24303D)
+P97 [Heading 2]: Run('Q1 — Why TF-IDF Over Bag-...', font=Calibri, size=11.5, bold=True, color=14293D)
+P98 [NoStyle]: Run('TF-IDF retains the speed ...', font=Calibri, size=11.0, bold=None, color=24303D)
+P99 [Heading 2]: Run('Q2 — Why Does F1-Score (9...', font=Calibri, size=11.5, bold=True, color=14293D)
+P100 [NoStyle]: Run('The reported F1-Score is ...', font=Calibri, size=11.0, bold=None, color=24303D)
+P101 [Heading 2]: Run('Q3 — Why Is Negative-Clas...', font=Calibri, size=11.5, bold=True, color=14293D)
+P102 [NoStyle]: Run('With only 377 negative ex...', font=Calibri, size=11.0, bold=None, color=24303D)
+P103 [Heading 2]: Run('Q4 — Why Was Logistic Reg...', font=Calibri, size=11.5, bold=True, color=14293D)
+P104 [NoStyle]: Run('All three tuned models sc...', font=Calibri, size=11.0, bold=None, color=24303D)
+P106 [NoStyle]: Run('This project delivers a f...', font=Calibri, size=11.0, bold=None, color=24303D)
+P107 [NoStyle]: Run('BOTTOM LINE   ...', font=None, size=10.5, bold=True, color=14293D) | Run('A 92.99% accurate, 96.12%...', font=None, size=10.5, bold=None, color=24303D)
+
+=== TABLE DETAILS ===
+
+Table 1 Style: NoStyle (2 rows x 1 cols)
+ Row 0: ['SENIOR MACHINE LEARNING & NLP ENGINEERING TEAM SENTIFY: PRODUCTION NLP SENTIMENT ANALYSIS ENGINE An Enterprise-Grade Natural Language Processing System for Amazon Echo Customer Review Classification']
+ Row 1: ['E-COMMERCE VOICE ASSISTANT PRODUCT REVIEW PORTFOLIO']
+
+Table 2 Style: NoStyle (6 rows x 2 cols)
+ Row 0: ['PREPARED BY', 'Muhammad Bilal Khan']
+ Row 1: ['REGISTRATION NO', 'ALMLB01-4883']
+ Row 2: ['INTERNSHIP', 'AI & ML Internship, ITSimplera Institute (June – August 2026)']
+ Row 3: ['SUPERVISOR', 'Talal Rehan']
+ Row 4: ['INSTRUCTOR', 'Sir Rayyan Khan']
+ Row 5: ['SUBMISSION DEADLINE', 'Friday, 31 July 2026']
+
+Table 3 Style: NoStyle (1 rows x 1 cols)
+ Row 0: ['PRODUCTION BUILD v1.0.0  •  STEP 17 ENGINEERING STANDARDS  •  JULY 2026']
+
+Table 4 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['01', 'Executive Impact Summary']
+
+Table 5 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['02', 'Problem Statement & Objectives']
+
+Table 6 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['03', 'Dataset Architecture & Exploratory Analysis']
+
+Table 7 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['04', 'Text Preprocessing & Feature Engineering']
+
+Table 8 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['05', 'Model Training — Stratified CV & GridSearchCV']
+
+Table 9 Style: NoStyle (4 rows x 7 cols)
+ Row 0: ['Classifier', 'Tuned Parameters', 'Accuracy', 'Precision']
+ Row 1: ['Logistic Regression ★', 'C=10.0, solver=liblinear', '92.99%', '93.35%']
+ Row 2: ['Linear SVM (Calibrated)', 'C=5.0, loss=squared_hinge', '92.82%', '94.42%']
+ Row 3: ['Multinomial Naive Bayes', 'alpha=0.01', '92.66%', '94.10%']
+
+Table 10 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['06', 'Model Evaluation & Diagnostics']
+
+Table 11 Style: NoStyle (6 rows x 5 cols)
+ Row 0: ['Class', 'Precision', 'Recall', 'F1-Score']
+ Row 1: ['Negative (0)', '0.88', '0.49', '0.63']
+ Row 2: ['Positive (1)', '0.93', '0.99', '0.96']
+ Row 3: ['Accuracy', '', '', '0.93']
+ Row 4: ['Macro Avg', '0.91', '0.74', '0.80']
+ Row 5: ['Weighted Avg', '0.93', '0.93', '0.92']
+
+Table 12 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['07', 'N-Gram & Lexical Pattern Analysis']
+
+Table 13 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['08', 'Model Interpretability']
+
+Table 14 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['09', 'Production Engineering Architecture (Step 17)']
+
+Table 15 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['10', 'Business Impact & Use Cases']
+
+Table 16 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['11', 'Viva Voce & Technical Defense Preparation']
+
+Table 17 Style: NoStyle (1 rows x 2 cols)
+ Row 0: ['12', 'Conclusion & Engineering Roadmap']
